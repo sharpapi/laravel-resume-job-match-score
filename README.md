@@ -82,15 +82,6 @@ try {
 }
 ```
 
-### Laravel Artisan Command Example
-
-```bash
-php artisan sharpapi:test-resume-match \
-    --file=storage/resume.pdf \
-    --description="Looking for a full-stack developer skilled in React and Node.js" \
-    --language=English
-```
-
 ---
 
 ## Example Response
