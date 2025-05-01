@@ -1,0 +1,73 @@
+{
+  "name": "sharpapi/laravel-resume-job-match-score",
+  "description": "AI Resume & Job Description Matching for Laravel powered by SharpAPI.com",
+  "keywords": [
+    "sharpapi",
+    "resume matching",
+    "cv",
+    "job description",
+    "laravel",
+    "ai api",
+    "php",
+    "ats",
+    "hr tech",
+    "natural language processing",
+    "job score",
+    "compatibility scoring"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/sharpapi/laravel-resume-job-match-score",
+  "authors": [
+    {
+      "name": "Dawid Makowski",
+      "email": "contact@sharpapi.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "ext-json": "*",
+    "laravel/framework": "^9.0|^10.0|^11.0|^12.0",
+    "guzzlehttp/guzzle": "^7.0",
+    "sharpapi/php-core": "^1.0.2",
+    "spatie/url": "^2.4"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.0",
+    "phpstan/phpstan": "^1.10",
+    "pestphp/pest": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SharpAPI\\ResumeMatchScore\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SharpAPI\\ResumeMatchScore\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": "",
+    "analyse": "vendor/bin/phpstan analyse",
+    "test": "vendor/bin/pest",
+    "test-coverage": "vendor/bin/pest --coverage",
+    "format": "vendor/bin/pint"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "phpstan/extension-installer": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "SharpAPI\\ResumeMatchScore\\ResumeMatchScoreProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

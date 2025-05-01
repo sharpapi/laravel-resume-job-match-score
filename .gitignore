@@ -28,3 +28,11 @@ Homestead.json
 .env.production
 .phpactor.json
 auth.json
+.idea
+
+build
+composer.lock
+.php-cs-fixer.cache
+coverage
+phpstan.neon
+
