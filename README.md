@@ -4,6 +4,10 @@
 
 ## 🎯 Instantly evaluate how well a candidate's resume aligns with your job descriptions — powered by SharpAPI AI.
 
+Supported resume files - **11 file formats**: **DOC, DOCX, TXT, RTF, PDF, JPG, JPEG, JPE, PNG, TIFF, TIF**
+
+And yes - it handles those **flattened PDFs** where the entire resume is just images instead of text.
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/sharpapi/laravel-resume-job-match-score.svg?style=flat-square)](https://packagist.org/packages/sharpapi/laravel-resume-job-match-score)
 [![Total Downloads](https://img.shields.io/packagist/dt/sharpapi/laravel-resume-job-match-score.svg?style=flat-square)](https://packagist.org/packages/sharpapi/laravel-resume-job-match-score)
 
