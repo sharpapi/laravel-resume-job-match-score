@@ -69,13 +69,21 @@ $resumePath     = storage_path('resume.pdf');      // make sure this file exists
 $jobDescription = 'We are hiring a PHP Developer with Laravel experience…';
 $language       = 'English';
 
+// Optional scoring directives (max 5000 chars). See "Context directives" below.
+$context = <<<CTX
+EMPHASIZE: backend scalability
+DEEMPHASIZE: frontend frameworks
+CREDIT: AWS
+CTX;
+
 $service = new ResumeMatchScoreService();
 
 try {
     $statusUrl = $service->matchResumeToJob(
         $resumePath,
         $jobDescription,
-        $language          // optional – English is default
+        $language,         // optional – English is default
+        $context           // optional – pass null to omit
     );
 
     $result = $service->fetchResults($statusUrl)->toArray();
@@ -84,6 +92,31 @@ try {
     // Handle SharpAPI or network errors
     echo $e->getMessage();
 }
+```
+
+---
+
+## Context directives
+
+The optional `$context` parameter lets you steer the scoring engine using a formal directive contract. The engine recognises three directive shapes, which can be mixed freely in a single string:
+
+| Directive | Effect |
+|-----------|--------|
+| `EMPHASIZE: <topic>` | Increases the matching metric weight by one step |
+| `DEEMPHASIZE: <topic>` | Decreases the matching metric weight by one step |
+| `CREDIT: <skill \| tool \| certification>` | Treats the named item as a plausible role requirement even if it is absent from the job description |
+
+Directives influence the `overall_match` score and the individual metric scores before the weighted average is computed.
+
+**Limit:** the context string may be up to **5000 characters**. Requests exceeding the limit fail with HTTP 422.
+
+Example:
+
+```text
+EMPHASIZE: backend scalability
+DEEMPHASIZE: frontend frameworks
+CREDIT: AWS
+CREDIT: Kubernetes
 ```
 
 ---

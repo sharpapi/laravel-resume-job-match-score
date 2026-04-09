@@ -25,15 +25,20 @@ class ResumeMatchScoreService extends SharpApiClient
     public function matchResumeToJob(
         string $cvFilePath,
         string $jobDescription,
-        string $language = 'English'
+        string $language = 'English',
+        ?string $context = null
     ): string {
         $response = $this->makeRequest(
             'POST',
             '/hr/resume_job_match_score',
-            [
-                'language' => $language,
-                'content' => $jobDescription
-            ],
+            array_filter(
+                [
+                    'language' => $language,
+                    'content'  => $jobDescription,
+                    'context'  => $context,
+                ],
+                static fn ($v) => $v !== null
+            ),
             $cvFilePath
         );
 
