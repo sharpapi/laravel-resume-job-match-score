@@ -12,6 +12,7 @@ class ResumeMatchScoreService extends SharpApiClient
     public function __construct()
     {
         parent::__construct(config('sharpapi-resume-match-score.api_key'));
+        $this->setUseCustomInterval((bool) config('sharpapi-resume-match-score.api_job_status_use_polling_interval', false));
         $this->setApiBaseUrl(config('sharpapi-resume-match-score.base_url'));
         $this->setApiJobStatusPollingInterval((int) config('sharpapi-resume-match-score.api_job_status_polling_interval', 10));
         $this->setApiJobStatusPollingWait((int) config('sharpapi-resume-match-score.api_job_status_polling_wait', 180));
@@ -20,6 +21,7 @@ class ResumeMatchScoreService extends SharpApiClient
 
     /**
      * @api
+     *
      * @throws GuzzleException
      */
     public function matchResumeToJob(
@@ -34,8 +36,8 @@ class ResumeMatchScoreService extends SharpApiClient
             array_filter(
                 [
                     'language' => $language,
-                    'content'  => $jobDescription,
-                    'context'  => $context,
+                    'content' => $jobDescription,
+                    'context' => $context,
                 ],
                 static fn ($v) => $v !== null
             ),
