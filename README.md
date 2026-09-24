@@ -38,7 +38,7 @@ SHARP_API_KEY=your_api_key_here
 Optionally, publish the config if you want to tweak the default settings:
 
 ```bash
-php artisan vendor:publish --tag=sharpapi-resume-job-match-score
+php artisan vendor:publish --tag=sharpapi-resume-match-score
 ```
 
 ---
@@ -174,6 +174,20 @@ CREDIT: Kubernetes
 
 - [Please let us know via GitHub »](https://github.com/sharpapi/laravel-resume-job-match-score/issues)
 - or [Join our Telegram Group »](https://t.me/sharpapi_community)
+
+---
+
+## AI agents (Laravel Boost)
+
+This package ships [Laravel Boost](https://github.com/laravel/boost) resources: a short guideline that is always loaded, and an on-demand `sharpapi-resume-job-match-score` skill covering resume-to-job scoring, context directives, queued polling, failures and test mocks. Boost 2 or newer is required.
+
+```bash
+composer require laravel/boost --dev
+php artisan boost:install             # first time
+php artisan boost:update --discover   # already using Boost
+```
+
+Select `sharpapi/laravel-resume-job-match-score` when Boost asks which packages to include.
 
 ---
 
